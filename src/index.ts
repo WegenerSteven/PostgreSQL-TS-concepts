@@ -1,5 +1,4 @@
 import { initializeTables } from "./config/librarydb";
-
 import { insertoneStudent, Students, insertMultipleStudents, query } from "./queries/students-query";
 
 // This is the main entry point of the application
