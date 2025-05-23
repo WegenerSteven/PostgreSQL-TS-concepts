@@ -1,5 +1,6 @@
-import { initializeTables } from "./config/librarydb";
-import { insertoneStudent, Students, insertMultipleStudents, query } from "./queries/students-query";
+import { libraryInsertion } from "./datainsertion.ts/librarian.insert";
+import { borrowedItemInsertion } from "./datainsertion.ts/borrowedItem.insert";
+
 
 // This is the main entry point of the application
 // It initializes the database and performs operations on it
@@ -39,3 +40,6 @@ import { insertoneStudent, Students, insertMultipleStudents, query } from "./que
     }
 })();
 
+
+// Run borrowed items data insertion
+borrowedItemInsertion();
