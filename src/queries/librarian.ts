@@ -202,6 +202,3 @@ export const getLibrariansGroupedByName = async (): Promise<{ fname: string; lna
     throw err;
   }
 };
-
-
-

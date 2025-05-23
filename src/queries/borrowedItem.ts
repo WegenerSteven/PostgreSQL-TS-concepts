@@ -16,6 +16,7 @@ export const insertBorrowedItem = async (borrowedItem: BorrowedItem): Promise<nu
     const res = await executeQuery(
       'INSERT INTO borrowed_items(student_id, item_type, item_id) VALUES($1, $2, $3) RETURNING id',
       [borrowedItem.student_id, borrowedItem.item_type, borrowedItem.item_id,]
+
     );
     const borrowedItemId = res.rows[0]?.id;
     console.log(`Borrowed item inserted with ID ${borrowedItemId}`);
@@ -64,9 +65,9 @@ export const getAllBorrowedItems = async (): Promise<BorrowedItem[]> => {
 
 // delete all borrowed items
 export const deleteAllBorrowedItems = async (): Promise<void> => {
-  try {
+  try 
     const res = await executeQuery('DELETE FROM borrowed_items');
-    console.log(`Deleted ${res.rowCount} borrowed items`);
+    console.log(`Deleted ${res.rowCount} borrowed items`)
   } catch (err) {
     console.error('Error deleting borrowed items', err);
     throw err;
