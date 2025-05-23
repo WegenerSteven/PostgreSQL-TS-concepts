@@ -1,10 +1,5 @@
-import { initializeTables } from "./config/librarydb";
-import { insertoneStudent, Students, insertMultipleStudents, query } from "./queries/students-query";
-
-import { insertoneStudent, Students } from "./queries/students-query";
-import { insertMultipleLibrarians, deleteAllLibrarians, Librarian, getAllLibrarians, insertLibrarian } from './queries/librarian';
-import { insertMultipleBorrowedItems,BorrowedItem,deleteAllBorrowedItems,getAllBorrowedItems,insertBorrowedItem } from "./queries/borrowedItem";
-import { insertoneStudent, Students, insertMultipleStudents, query } from "./queries/students-query";
+import { libraryInsertion } from "./datainsertion.ts/librarian.insert";
+import { borrowedItemInsertion } from "./datainsertion.ts/borrowedItem.insert";
 
 // This is the main entry point of the application
 // It initializes the database and performs operations on it
@@ -15,8 +10,8 @@ import { insertoneStudent, Students, insertMultipleStudents, query } from "./que
         await initializeTables();
 
         //insert a student 
-        const studentId = await insertoneStudent({ Fname: 'Antony', Lname: 'Gichuki', email: 'antony@gmail.com' })
-        console.log(`inserted student with ID: ${studentId}`);
+        // const studentId = await insertoneStudent({ Fname: 'Antony', Lname: 'Gichuki', email: 'antony@gmail.com' })
+        // console.log(`inserted student with ID: ${studentId}`);
 
         
     // librarian operations
@@ -68,17 +63,17 @@ console.table(librarians);
     console.error('Error executing database operations:', error);
 
         //insert other students with a transaction
-        const studentsToInsert: Students[] = [
-            { Fname: 'Benard', Lname: 'Mugambi', email: 'benard@gmail.com' },
-            { Fname: 'Catherine', Lname: 'Wanjiru', email: 'catherine@gmail.com' },
-            { Fname: 'David', Lname: 'Karanja', email: 'david@gmail.com' },
-            { Fname: 'Eunice', Lname: 'Wambui', email: 'eunice@gmail.com' },
-            { Fname: 'Faith', Lname: 'Wairimu', email: 'faith@gmail.com' },
-            { Fname: 'George', Lname: 'Mwangi', email: 'george@gmail.com' },
-            { Fname: 'Hellen', Lname: 'Njeri', email: 'hellen@gmail.com' },
-            { Fname: 'Irene', Lname: 'Wanjiru', email: 'irene@gmail.com' },
-        ];
-        await insertMultipleStudents(studentsToInsert);
+        // const studentsToInsert: Students[] = [
+        //     { Fname: 'Benard', Lname: 'Mugambi', email: 'benard@gmail.com' },
+        //     { Fname: 'Catherine', Lname: 'Wanjiru', email: 'catherine@gmail.com' },
+        //     { Fname: 'David', Lname: 'Karanja', email: 'david@gmail.com' },
+        //     { Fname: 'Eunice', Lname: 'Wambui', email: 'eunice@gmail.com' },
+        //     { Fname: 'Faith', Lname: 'Wairimu', email: 'faith@gmail.com' },
+        //     { Fname: 'George', Lname: 'Mwangi', email: 'george@gmail.com' },
+        //     { Fname: 'Hellen', Lname: 'Njeri', email: 'hellen@gmail.com' },
+        //     { Fname: 'Irene', Lname: 'Wanjiru', email: 'irene@gmail.com' },
+        // ];
+        // await insertMultipleStudents(studentsToInsert);
 
         //query all student to verify
         const student = await query();
@@ -93,3 +88,6 @@ console.table(librarians);
     }
 })();
 
+
+// Run borrowed items data insertion
+borrowedItemInsertion();
