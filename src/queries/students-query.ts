@@ -74,3 +74,8 @@ export const deleteAllStudents = async (): Promise<void> => {
 
     }
 }
+
+//query all student to verify
+        // const student = await query();
+        // console.log('All students in database:');
+        // console.table(student);
