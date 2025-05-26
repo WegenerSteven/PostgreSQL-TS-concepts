@@ -1,5 +1,6 @@
 import { initializeTables } from "./config/librarydb";
-import { insertoneStudent, Students, insertMultipleStudents, query } from "./queries/students-query";
+import { insertEbook } from "./queries/ebooks";
+import {/* insertoneStudent,*/ Students, insertMultipleStudents, query } from "./queries/students-query";
 
 // This is the main entry point of the application
 // It initializes the database and performs operations on it
@@ -9,6 +10,8 @@ import { insertoneStudent, Students, insertMultipleStudents, query } from "./que
 
         await initializeTables();
 
+        const ebookId = await insertEbook( {title: 'Atomic Habits', author: 'Hunter', file_url: 'https://jamesclear.com/atomic-habits'})
+        console.log(`ebook entered, ID: ${ebookId}`);
         //insert a student 
         // const studentId = await insertoneStudent({ Fname: 'Antony', Lname: 'Gichuki', email: 'antony@gmail.com' })
         // console.log(`inserted student with ID: ${studentId}`);
